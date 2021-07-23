@@ -18,16 +18,7 @@ namespace Task6
         public static int[] FilterDigit(int[] arr, int number)
         {
             var list = new List<int>();
-            var ch = (char)(number + '0');
-            Console.WriteLine(ch);
-            /*foreach (var t in arr)
-            {
-                var str = t.ToString();
-                if (str.Contains(ch))
-                {
-                    list.Add(int.Parse(str));
-                }
-            }*/
+
             foreach (var element in arr)
             {
                 var initialElement = element;

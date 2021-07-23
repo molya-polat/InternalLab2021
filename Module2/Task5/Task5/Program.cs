@@ -8,62 +8,69 @@ namespace Task5
      {
         static void Main(string[] args)
         {
-            Console.WriteLine(MyFunc(8945612));
-            //8337242
+            Console.WriteLine(MyFunc(1234321));
         }
 
         public static int MyFunc(int number)
         {
-            string str = number.ToString();
+            var str = number.ToString();
 
-            char[] ch = str.ToCharArray();
+            var ch = str.ToCharArray();
             
             StringBuilder sb = new StringBuilder();
-            bool flag = false;
-            int index = 0;
+          
+            var min = int.MaxValue;
+            
             for (var i = 0; i < ch.Length - 1; i++)
             {
-                if (flag)
-                {
-                    break;
-                }
-
                 for (var j = i + 1; j < ch.Length; j++)
                 {
-                  if (ch[i] < ch[j])
-                  {
-                        Swap(ref ch[i], ref ch[j]);
-                        flag = true;
-                        Console.WriteLine(i);
-                        index = i;
-                        break;
-                  }
+                    Swap(ref ch[i], ref ch[j]);
+                    foreach (var c in ch)
+                    {
+                        sb.Append(c);
+                    }
+                    var result = int.Parse(sb.ToString());
+                    if (result != number && result > number && min > result)
+                    {
+                        min = result;
+                    }
+
+                    sb.Clear();
+                    Swap(ref ch[i], ref ch[j]);
                 }
             }
-            for (var i = index + 2; i < ch.Length; i++)
+
+            if (min == int.MaxValue) return -1;
             {
-                var key = ch[i];
-                var j = i;
-                while ((j > 1) && (ch[j - 1] > key))
+                var chNew = min.ToString().ToCharArray();
+                var index = 0;
+                while (ch[index] == chNew[index])//search index where the different digits start
                 {
-                    Swap(ref ch[j - 1], ref ch[j]);
-                    j--;
+                    index++;
                 }
 
-                ch[j] = key;
-            }
-            foreach (var c in ch)
-            {
-                sb.Append(c);
-            } 
+                ch = chNew[(index+1)..chNew.Length];
+                Array.Sort(ch);
+                var m = 0;
+                for (var k = index + 1; k < chNew.Length; k++)
+                {
+                    chNew[k] = ch[m++];
+                }
 
-            var result = int.Parse(sb.ToString());
-            if (number == result)
-            {
-                return -1;
-            }
+                var sbNew = new StringBuilder();
+                foreach (var c in chNew)
+                {
+                    sbNew.Append(c);
+                }
+                var finalResult = int.Parse(sbNew.ToString());
+                if (number == finalResult)
+                {
+                    return -1;
+                }
 
-            return result;
+                return finalResult;
+            }
 
         }
 

@@ -5,8 +5,8 @@ namespace TestTask5
     public class Tests
     {
         [Test]
-        [TestCase(833712, 871233)]
-        [TestCase(321848, 4123488)]
+        [TestCase(833712, 833721)]
+        [TestCase(321848, 321884)]
         [TestCase(12, 21)]
         [TestCase(513,531)]
         [TestCase(2017, 2071)]

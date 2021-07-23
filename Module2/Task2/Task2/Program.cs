@@ -4,7 +4,7 @@ namespace Task2
 {
     public class Program
     {
-        static void Main()
+        private static void Main()
         {
             int [] arr = {1, 56, 123, -4, 7, 8};
             Console.WriteLine(FindMax(arr, arr.Length));
@@ -21,8 +21,7 @@ namespace Task2
             {
                 return arr[0];
             }
-            var t = arr[0];
-            arr = arr[1..size];
+            var t = arr[^1];
             return Math.Max(t, FindMax(arr, size-1));
         }
     }

@@ -7,8 +7,8 @@ namespace Task6
     {
         static void Main(string[] args)
         {
-            int[] arr = new[] {7, 12, 56, 67, 78, 89, 7};
-            int[] r = FilterDigit(arr,7);
+            var arr = new[] { 7, 12, 56, 67, 78, 89, 7 };
+            var r = FilterDigit(arr, 7);
             foreach (var num in r)
             {
                 Console.WriteLine(num);
@@ -17,14 +17,29 @@ namespace Task6
 
         public static int[] FilterDigit(int[] arr, int number)
         {
-            List<int> list = new List<int>();
-            char ch = (char)(number + '0');
-            foreach (var t in arr)
+            var list = new List<int>();
+            var ch = (char)(number + '0');
+            Console.WriteLine(ch);
+            /*foreach (var t in arr)
             {
                 var str = t.ToString();
                 if (str.Contains(ch))
                 {
                     list.Add(int.Parse(str));
+                }
+            }*/
+            foreach (var element in arr)
+            {
+                var initialElement = element;
+                while (initialElement > 0)
+                {
+                    var temp = initialElement % 10;
+                    if (temp == number)
+                    {
+                        list.Add(element);
+                        break;
+                    }
+                    initialElement /= 10;
                 }
             }
 
@@ -33,7 +48,7 @@ namespace Task6
                 return null;
             }
 
-            int[] result = new int[list.Count];
+            var result = new int[list.Count];
             list.CopyTo(result);
             return result;
         }

@@ -4,9 +4,9 @@ namespace Task3
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            double[] arr = new[] {-48.2, 98.45, 15.12, 23.1, 8.0, 112.75, -24.28};
+            var arr = new[] {-48.2, 98.3, 15.12, 23.1, 8.0, 112.6, -24.28};
 
             Console.WriteLine(FindSpecialIndex(arr));
         }
@@ -30,6 +30,7 @@ namespace Task3
                 {
                     return i;
                 }
+                Console.WriteLine(leftSum + " " + rightSum);
                 leftSum = rightSum = 0;
             }
 

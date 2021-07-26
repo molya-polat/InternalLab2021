@@ -36,29 +36,25 @@ namespace Task1
             }
 
             var i = 0;
-            do
+            while (number > 0)
             {
-                var bit = number - (int)(number / 2) * 2;
+                var bit = number % 2;
                 result[31 - i++] = bit;
                 number /= 2;
-            } while (number > 0);
+            }
 
             if (!isNegative) return result;
-            //conversion to two's complement
+          //conversion to two's complement
             for(var t = 0; t < 32; t++)
             {
-                if (result[t] == 0)
-                    result[t] = 1;
-                else
-                {
-                    result[t] = 0;
-                }
+               var temp = (result[t] == 0) ? result[t] = 1 : result[t] = 0;
             }
 
             var p = 31;
             while (result[p] != 0)//add one
             {
-                result[p] = 1;
+                result[p] = 0;
+                p--;
             }
 
             result[p] = 1;
@@ -81,12 +77,7 @@ namespace Task1
                 bits[j] = 0;
                 for (var k = 0; k < bits.Length; k++)//conversion from two's complement
                 {
-                    if (bits[k] == 0)
-                        bits[k] = 1;
-                    else
-                    {
-                        bits[k] = 0;
-                    }
+                    var temp = (bits[k] == 0) ? bits[k] = 1 : bits[k] = 0;
                 }
             }
             var result = 0;

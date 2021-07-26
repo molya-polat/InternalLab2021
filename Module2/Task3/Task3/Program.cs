@@ -13,25 +13,20 @@ namespace Task3
 
         public static int FindSpecialIndex(double[] arr)
         {
-            double leftSum = 0, rightSum = 0;
+            var leftSum = 0m;
+            var totalSum = 0m;
+            foreach (var t in arr)
+            {
+                totalSum += (decimal)t;
+            }
             for (var i = 1; i < arr.Length; i++)
             {
-                for (var j = 0; j < i; j++)
-                {
-                    leftSum += arr[j];
-                }
-
-                for (var k = i + 1; k < arr.Length; k++)
-                {
-                    rightSum += arr[k];
-                }
-
-                if (leftSum.CompareTo(rightSum) == 0)
+                leftSum += (decimal)arr[i - 1];
+                var rightSum = totalSum - leftSum - (decimal)arr[i];
+                if (leftSum == rightSum)
                 {
                     return i;
                 }
-                Console.WriteLine(leftSum + " " + rightSum);
-                leftSum = rightSum = 0;
             }
 
             return -1;

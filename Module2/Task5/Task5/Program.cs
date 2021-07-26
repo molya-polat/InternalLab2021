@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -8,7 +9,15 @@ namespace Task5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(MyFunc(1234321));
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            Console.WriteLine(MyFunc(12346821));
+            stopWatch.Stop();
+            var ts = stopWatch.Elapsed;
+
+            var elapsedTime = $"{ts.Hours:00}:{ts.Minutes:00}:{ts.Seconds:00}.{ts.Milliseconds / 10:00}";
+            Console.WriteLine("RunTime " + elapsedTime);
+
         }
 
         public static int MyFunc(int number)

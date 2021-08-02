@@ -38,6 +38,6 @@ namespace Task1
             return Math.Round(xNext,4);
         }
 
-        static double Func(double number, double n, double x) => (1 / n) * (((n - 1) * x) + number / Math.Pow(x, n - 1));
+        private static double Func(double number, double n, double x) => (1 / n) * (((n - 1) * x) + number / Math.Pow(x, n - 1));
     }
 }
